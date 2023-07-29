@@ -1,5 +1,3 @@
-let i = 0;
-
 const internetErrorMessages = [
   "Error 404: Internet not found. Please check your brain-to-internet interface.",
   "Lost connection. Searching for the meaning of life in the digital void...",
@@ -13,52 +11,38 @@ const internetErrorMessages = [
   "Error 503: Internet service on vacation. It's sipping piña coladas on a tropical server.",
 ];
 
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 // Randomly select and display a funny error message
 const randomErrorMessage = () => {
   const randomIndex = Math.floor(Math.random() * internetErrorMessages.length);
   return internetErrorMessages[randomIndex];
 };
 
-
-
+// Fetch a random activity from the Bored API
+let isClicked = false;
 async function clicked() {
-  if (i != 0) {
-    return;
-  }
-  document.getElementById("random").innerHTML = "‎";
+  if (isClicked) return;
+  document.getElementById("random").innerHTML = "";
   await fetch("https://www.boredapi.com/api/activity/")
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       typeWriter(data.activity);
     })
     .catch((err) => {
-      console.log(err)
       typeWriter(randomErrorMessage())
     });
-    
 }
 
+// Type out the text
 async function typeWriter(text) {
-  if (i < text.length) {
+  isClicked = true;
+  for (i = 0; i < text.length; i++) {
     document.getElementById("random").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeWriter, 30, text);
-  } else {
-    i = 0;
+    await sleep(30);
   }
+  isClicked = false;
 }
-
-// Starting function on page load
-clicked();
-
-// Listen to space key
-document.addEventListener("keydown", (event) => {
-  if (event.code === "Space") {
-    clicked();
-  }
-}
-);
 
 // Track if user typed "awesome" anywhere
 let awesome = "";
@@ -74,15 +58,28 @@ document.addEventListener("keypress", (event) => {
   }
 });
 
-function getRandomColor() {
+// Easter eggggggg AweSoMe 🥚
+async function randomColor() {
   const colors = ['#ffbe0b', '#fb5607', '#ff006e', '#8338ec', '#3a86ff'];
-  return colors[Math.floor(Math.random() * colors.length)];
+  let i = 0;
+  while (isAwesome) {
+    document.documentElement.style.setProperty('--primary-color', colors[i]);
+    i = (i + 1) % colors.length;
+    await sleep(1000);
+  }
+  document.documentElement.style.setProperty('--primary-color', '#1b263b');
 }
 
-function randomColor() {
-  if (!isAwesome) {
-    return;
+// Starting function on page load
+clicked();
+
+// Listen to space key
+document.addEventListener("keydown", (event) => {
+  if (event.code === "Space") {
+    clicked();
   }
-  document.documentElement.style.setProperty('--primary-color', getRandomColor());
-  setTimeout(randomColor, 1000);
 }
+);
+
+// when i wrote this code, only god and i knew what it did
+// now only god knows
