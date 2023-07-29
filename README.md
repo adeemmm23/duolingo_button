@@ -1,3 +1,10 @@
 # Duolingo Button
 ## Description
-This is a simple script that adds a button to the Duolingo website that allows you to play a sound of the word you are hovering over. It uses the Google Translate API to get the sound file. It also adds a button to the top of the page that allows you to play the sound of the word you are currently learning.
+This project started as a "Duolingo Button" then moved on quickly to make some API requests and display the data in a more readable way. The project is still in development and will be updated as I learn more about the API and how to use it.
+
+## How to use 
+Just click the button...
+(i made this just to look cool lol)
+
+## Bye
+Bye
