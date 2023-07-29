@@ -47,8 +47,22 @@ function getBack() {
 }
 
 // Copy the activity to clipboard
+let copied = 0;
+let lastCopied = '';
 function copyToClipboard() {
-  navigator.clipboard.writeText(boredList[boredList.length - 1]);
+  lastCopied = boredList[boredList.length - 1];
+  if (lastCopied === boredList[boredList.length - 1]) {
+    copied++;
+  } else { 
+    copied = 0;
+  }
+  if (copied >= 5 ){
+    document.getElementById("random").innerHTML = "";
+    typeWriter("THAT IS TOO MUCH COPY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    lastCopied = "Man do you need help??"
+    copied = 0;
+  }
+    navigator.clipboard.writeText(lastCopied);
 }
 
 // Type out the text
