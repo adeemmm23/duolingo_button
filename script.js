@@ -20,6 +20,8 @@ const randomErrorMessage = () => {
 };
 
 // Fetch a random activity from the Bored API
+boredList = [];
+
 let isClicked = false;
 async function clicked() {
   if (isClicked) return;
@@ -27,11 +29,26 @@ async function clicked() {
   await fetch("https://www.boredapi.com/api/activity/")
     .then((res) => res.json())
     .then((data) => {
+      boredList.push(data.activity);
       typeWriter(data.activity);
     })
     .catch((err) => {
       typeWriter(randomErrorMessage())
     });
+}
+
+// Get back to the previous activity
+function getBack() {
+  if (boredList.length > 1) {
+    boredList.pop();
+    document.getElementById("random").innerHTML = "";
+    typeWriter(boredList[boredList.length - 1]);
+  }
+}
+
+// Copy the activity to clipboard
+function copyToClipboard() {
+  navigator.clipboard.writeText(boredList[boredList.length - 1]);
 }
 
 // Type out the text
@@ -65,7 +82,7 @@ async function randomColor() {
   while (isAwesome) {
     document.documentElement.style.setProperty('--primary-color', colors[i]);
     i = (i + 1) % colors.length;
-    await sleep(1000);
+    await sleep(3000);
   }
   document.documentElement.style.setProperty('--primary-color', '#1b263b');
 }
