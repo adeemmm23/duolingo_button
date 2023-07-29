@@ -12,8 +12,10 @@ body {
 #random {
     color: #e0e1dd;
     font-family: 'Alexandria', sans-serif;
-    font-size: 52px;
+    font-size: 32px;
     text-transform: uppercase;
+    width: 70%;
+    text-align: center;
 }
 
 .button {
