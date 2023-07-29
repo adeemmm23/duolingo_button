@@ -1,4 +1,3 @@
-let i = 0;
 clicked();
 
 function clicked() {
