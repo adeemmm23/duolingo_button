@@ -39,7 +39,7 @@ async function clicked() {
     
 }
 
-function typeWriter(text) {
+async function typeWriter(text) {
   if (i < text.length) {
     document.getElementById("random").innerHTML += text.charAt(i);
     i++;
@@ -62,11 +62,13 @@ document.addEventListener("keydown", (event) => {
 
 // Track if user typed "awesome" anywhere
 let awesome = "";
+let isAwesome = false;
 
 document.addEventListener("keypress", (event) => {
   const keyName = event.key;
   awesome += keyName;
   if (awesome.includes("awesome")) {
+    isAwesome = !isAwesome;
     randomColor();
     awesome = "";
   }
@@ -78,6 +80,9 @@ function getRandomColor() {
 }
 
 function randomColor() {
+  if (!isAwesome) {
+    return;
+  }
   document.documentElement.style.setProperty('--primary-color', getRandomColor());
   setTimeout(randomColor, 1000);
 }
