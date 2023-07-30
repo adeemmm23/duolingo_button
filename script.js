@@ -51,7 +51,7 @@ let copied = 1;
 let lastCopied = "";
 const iconsList = ["delete", "settings", "key", "error", "warning"];
 
-function copyToClipboard() {
+async function copyToClipboard() {
   lastCopied === boredList[boredList.length - 1] ? copied++ : (copied = 1);
   switch (copied) {
     case 5:
@@ -60,26 +60,36 @@ function copyToClipboard() {
         "THAT IS TOO MUCH COPY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
       );
       playIcons();
-      navigator.clipboard.writeText("Man do you need help??");
+      await navigator.clipboard.writeText("Man do you need help??");
       break;
     case 10:
       document.getElementById("random").innerHTML = "";
       typeWriter("ARE YOU A MAD MAN OR SOMETHING????");
       playIcons();
-      navigator.clipboard.writeText("Go to hell!!");
+      await navigator.clipboard.writeText("Go to hell!!");
       break;
     case 15:
       document.getElementById("random").innerHTML = "";
       typeWriter("I AM DONE WITH YOU!!!");
       playIcons();
-      navigator.clipboard.writeText("You are helpless!");
+      await navigator.clipboard.writeText("You are helpless!");
       copied = 1;
       break;
     default:
-      navigator.clipboard.writeText(boredList[boredList.length - 1]);
+      await navigator.clipboard.writeText(boredList[boredList.length - 1]);
       break;
   }
   lastCopied = boredList[boredList.length - 1];
+}
+
+// Copy function for mobiles
+async function copy(text){
+  var input = document.createElement('input');
+  input.setAttribute('value', text);
+  document.body.appendChild(input);
+  input.select();
+  var result = document.execCommand('copy');
+  document.body.removeChild(input);
 }
 
 async function playIcons() {

@@ -1,29 +1,39 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible"
+            content="ie=edge">
+        <meta name="description"
+            content="Duolingo Button">
+        <meta name="keywords"
+            content="Duolingo, Button, Random, Activity">
+        <meta name="author"
+            content="Adem Othman">
         <title>Duolingo Button</title>
+        <link rel="icon" href="favico.png">
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link
             href="https://fonts.googleapis.com/css2?family=Alexandria&display=swap"
             rel="stylesheet">
         <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"/>
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
     </head>
     <body>
         <p id="random"></p>
         <div class="buttonsList">
             <button class="button" onclick="getBack()"><span
-                class="material-symbols-rounded">
-                arrow_back
-            </span></button>
+                    class="material-symbols-rounded">
+                    arrow_back
+                </span></button>
             <button class="button" onclick="clicked()">Random Activity</button>
             <button class="button" id="shakeButton" onclick="copyToClipboard()"><span
-                class="material-symbols-rounded"
-                id="copyIcon"
-                >
-                content_copy
-            </span></button>
+                    class="material-symbols-rounded"
+                    id="copyIcon">
+                    content_copy
+                </span></button>
         </div>
     </body>
     <script src="script.js"></script>

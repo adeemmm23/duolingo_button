@@ -11,7 +11,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100svh;
   background-color: var(--primary-color);
   transition: background-color 2s ease-in-out 0.8s;
 }
@@ -37,6 +37,7 @@ button {
   gap: 10px;
   position: absolute;
   bottom: 15%;
+  margin: 0 10px 0 10px;
 }
 .button {
   background-color: var(--primary-color);
