@@ -11,7 +11,7 @@ const internetErrorMessages = [
   "Error 503: Internet service on vacation. It's sipping piña coladas on a tropical server.",
 ];
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // Randomly select and display a funny error message
 const randomErrorMessage = () => {
@@ -21,8 +21,8 @@ const randomErrorMessage = () => {
 
 // Fetch a random activity from the Bored API
 boredList = [];
-
 let isClicked = false;
+
 async function clicked() {
   if (isClicked) return;
   document.getElementById("random").innerHTML = "";
@@ -33,7 +33,7 @@ async function clicked() {
       typeWriter(data.activity);
     })
     .catch((err) => {
-      typeWriter(randomErrorMessage())
+      typeWriter(randomErrorMessage());
     });
 }
 
@@ -48,21 +48,43 @@ function getBack() {
 
 // Copy the activity to clipboard
 let copied = 0;
-let lastCopied = '';
+let lastCopied = "";
+const iconsList = ["delete", "settings", "key", "error", "warning"];
+
 function copyToClipboard() {
-  lastCopied = boredList[boredList.length - 1];
-  if (lastCopied === boredList[boredList.length - 1]) {
-    copied++;
-  } else { 
+  if (lastCopied !== boredList[boredList.length - 1]) {
     copied = 0;
-  }
-  if (copied >= 5 ){
-    document.getElementById("random").innerHTML = "";
-    typeWriter("THAT IS TOO MUCH COPY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    lastCopied = "Man do you need help??"
-    copied = 0;
-  }
     navigator.clipboard.writeText(lastCopied);
+  } else {
+    copied++;
+  }
+  lastCopied = boredList[boredList.length - 1];
+  if (copied >= 5) {
+    document.getElementById("random").innerHTML = "";
+    typeWriter(
+      "THAT IS TOO MUCH COPY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    );
+    playIcons();
+    lastCopied = "Man do you need help??";
+    copied = 0;
+  }
+}
+
+async function playIcons() {
+  let i = 0;
+  let j = 0;
+  document.getElementById("shakeButton").className += " shaking";
+  while (true) {
+    document.getElementById("copyIcon").innerHTML = iconsList[i];
+    i = (i + 1) % iconsList.length;
+    j++;
+    await sleep(100);
+    if (j === 30) {
+      document.getElementById("copyIcon").innerHTML = "content_copy";
+      document.getElementById("shakeButton").className = "button";
+      break;
+    }
+  }
 }
 
 // Type out the text
@@ -91,14 +113,14 @@ document.addEventListener("keypress", (event) => {
 
 // Easter eggggggg AweSoMe 🥚
 async function randomColor() {
-  const colors = ['#ffbe0b', '#fb5607', '#ff006e', '#8338ec', '#3a86ff'];
+  const colors = ["#ffbe0b", "#fb5607", "#ff006e", "#8338ec", "#3a86ff"];
   let i = 0;
   while (isAwesome) {
-    document.documentElement.style.setProperty('--primary-color', colors[i]);
+    document.documentElement.style.setProperty("--primary-color", colors[i]);
     i = (i + 1) % colors.length;
     await sleep(3000);
   }
-  document.documentElement.style.setProperty('--primary-color', '#1b263b');
+  document.documentElement.style.setProperty("--primary-color", "#1b263b");
 }
 
 // Starting function on page load
@@ -109,8 +131,7 @@ document.addEventListener("keydown", (event) => {
   if (event.code === "Space") {
     clicked();
   }
-}
-);
+});
 
 // when i wrote this code, only god and i knew what it did
 // now only god knows
