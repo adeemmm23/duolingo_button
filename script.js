@@ -52,22 +52,19 @@ let lastCopied = "";
 const iconsList = ["delete", "settings", "key", "error", "warning"];
 
 function copyToClipboard() {
-  if (lastCopied !== boredList[boredList.length - 1]) {
-    copied = 0;
-    navigator.clipboard.writeText(lastCopied);
-  } else {
-    copied++;
-  }
-  lastCopied = boredList[boredList.length - 1];
+  lastCopied === boredList[boredList.length - 1] ? copied++ : (copied = 0);
   if (copied >= 5) {
     document.getElementById("random").innerHTML = "";
     typeWriter(
       "THAT IS TOO MUCH COPY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     );
     playIcons();
-    lastCopied = "Man do you need help??";
+    navigator.clipboard.writeText("Man do you need help??");
     copied = 0;
+  } else {
+    navigator.clipboard.writeText(boredList[boredList.length - 1]);
   }
+  lastCopied = boredList[boredList.length - 1];
 }
 
 async function playIcons() {

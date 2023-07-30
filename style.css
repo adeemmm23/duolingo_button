@@ -16,6 +16,10 @@ body {
   transition: background-color 2s ease-in-out 0.8s;
 }
 
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 #random {
   color: var(--tertiary-color);
   font-family: "Alexandria", sans-serif;
