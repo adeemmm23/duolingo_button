@@ -47,22 +47,37 @@ function getBack() {
 }
 
 // Copy the activity to clipboard
-let copied = 0;
+let copied = 1;
 let lastCopied = "";
 const iconsList = ["delete", "settings", "key", "error", "warning"];
 
 function copyToClipboard() {
-  lastCopied === boredList[boredList.length - 1] ? copied++ : (copied = 0);
-  if (copied >= 5) {
-    document.getElementById("random").innerHTML = "";
-    typeWriter(
-      "THAT IS TOO MUCH COPY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    );
-    playIcons();
-    navigator.clipboard.writeText("Man do you need help??");
-    copied = 0;
-  } else {
-    navigator.clipboard.writeText(boredList[boredList.length - 1]);
+  lastCopied === boredList[boredList.length - 1] ? copied++ : (copied = 1);
+  switch (copied) {
+    case 5:
+      document.getElementById("random").innerHTML = "";
+      typeWriter(
+        "THAT IS TOO MUCH COPY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      );
+      playIcons();
+      navigator.clipboard.writeText("Man do you need help??");
+      break;
+    case 10:
+      document.getElementById("random").innerHTML = "";
+      typeWriter("ARE YOU A MAD MAN OR SOMETHING????");
+      playIcons();
+      navigator.clipboard.writeText("Go to hell!!");
+      break;
+    case 15:
+      document.getElementById("random").innerHTML = "";
+      typeWriter("I AM DONE WITH YOU!!!");
+      playIcons();
+      navigator.clipboard.writeText("You are helpless!");
+      copied = 1;
+      break;
+    default:
+      navigator.clipboard.writeText(boredList[boredList.length - 1]);
+      break;
   }
   lastCopied = boredList[boredList.length - 1];
 }
@@ -105,6 +120,19 @@ document.addEventListener("keypress", (event) => {
     isAwesome = !isAwesome;
     randomColor();
     awesome = "";
+  }
+});
+
+// Track if user typed "UFO" anywhere
+let ufo = "";
+
+document.addEventListener("keypress", (event) => {
+  const keyName = event.key;
+  ufo += keyName;
+  if (ufo.includes("UFO")) {
+    document.getElementById("random").innerHTML = "";
+    typeWriter("👽👽👽👽👽");
+    ufo = "";
   }
 });
 

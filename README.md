@@ -13,8 +13,9 @@ Just click the button... 🤪
 i Shouldn't be telling you this but...
 - Type in `Awesome` anywhere... 🤫
 - Turn off internet while on site... 🥚
+- When copying so many times the same text 🤯 try to paste it somewhere..
 
-i'll be adding more soon... ✨
+I'll be adding more soon... ✨
 
 ## Bored API Sample Response
 I wanted to add some code in markdown for so long 😎
