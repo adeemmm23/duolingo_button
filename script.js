@@ -54,7 +54,7 @@ function getBack() {
     typeWriter("You activated the Sakashima Yokoshima Happo fusagari", 70);
     document.getElementById("music").play();
     }
-    if (backClicked > 5) {
+    if (backClicked > 7) {
       document.getElementById("random").innerHTML = "";
       document.body.className = "";
       typeWriter("Shhhh", 70);
