@@ -1,7 +1,17 @@
 :root {
   --primary-color: #1b263b;
   --secondary-color: #0000003e;
-  --tertiary-color: #ffffffb7;
+  --tertiary-color: #ffffffcc;
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: rgb(255, 255, 255);
+  background: var(--secondary-color);
+}
+
+::selection {
+  color: rgb(255, 255, 255);
+  background: var(--secondary-color);
 }
 
 body {
@@ -36,6 +46,16 @@ button {
   margin-bottom: 32px;
 }
 
+#madeFromMe {
+  color: var(--tertiary-color);
+  font-family: "Alexandria", sans-serif;
+  font-size: 9px;
+  text-transform: uppercase;
+  text-align: center;
+  position: absolute;
+  bottom: 5%;
+}
+
 .buttonsList {
   display: flex;
   flex-direction: row;
@@ -45,6 +65,7 @@ button {
   bottom: 15%;
   margin: 0 10px 0 10px;
 }
+
 .button {
   background-color: var(--primary-color);
   box-shadow: 0 7px var(--secondary-color);
