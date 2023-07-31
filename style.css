@@ -1,19 +1,25 @@
 :root {
   --primary-color: #1b263b;
   --secondary-color: #0000003e;
-  --tertiary-color: #e0e1dd;
+  --tertiary-color: #ffffffb7;
 }
 
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--primary-color);
+  transition: background-color 2s ease-in-out 0.8s;
+  overflow: hidden;
+}
+
+.wrapper {
+  /* background-image: url(hexed.png);
+  background-size: 8px 8px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100svh;
-  background-color: var(--primary-color);
-  transition: background-color 2s ease-in-out 0.8s;
 }
 
 button {
@@ -53,8 +59,7 @@ button {
   cursor: pointer;
   font-family: "Alexandria", sans-serif;
   text-transform: uppercase;
-  transition: all 0.1s ease 0s;
-  transition: background-color 2s ease-in-out 0.8s;
+  transition: all 0.2s ease 0s, background-color 2s ease-in-out 0.8s;
 }
 
 .button:active {
@@ -86,4 +91,9 @@ button {
 
 .shaking {
   animation: shakingFrames 0.15s infinite;
+}
+
+.hirakoTime {
+  transform: rotate(180deg);
+  transition: background-color 2s ease-in-out 0.8s, transform 2s ease-in-out 0.5s;
 }

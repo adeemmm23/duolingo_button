@@ -38,11 +38,28 @@ async function clicked() {
 }
 
 // Get back to the previous activity
+let backClicked = "0"
+
 function getBack() {
   if (boredList.length > 1) {
     boredList.pop();
     document.getElementById("random").innerHTML = "";
     typeWriter(boredList[boredList.length - 1]);
+  } else {
+    backClicked ++;
+    if (backClicked == 5) {
+      document.getElementById("random").innerHTML = "";
+    document.body.className = "hirakoTime";
+    document.documentElement.style.setProperty("--primary-color", "#ffb700");
+    typeWriter("You activated the Sakashima Yokoshima Happo fusagari", 70);
+    document.getElementById("music").play();
+    }
+    if (backClicked > 5) {
+      document.getElementById("random").innerHTML = "";
+      document.body.className = "";
+      typeWriter("Shhhh", 70);
+      backClicked = 0;
+    }
   }
 }
 
@@ -110,11 +127,11 @@ async function playIcons() {
 }
 
 // Type out the text
-async function typeWriter(text) {
+async function typeWriter(text, time = 30) {
   isClicked = true;
   for (i = 0; i < text.length; i++) {
     document.getElementById("random").innerHTML += text.charAt(i);
-    await sleep(30);
+    await sleep(time);
   }
   isClicked = false;
 }
